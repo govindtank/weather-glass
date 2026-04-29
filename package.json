@@ -1,0 +1,20 @@
+{
+  "name": "gandhinagar-weather-glass",
+  "version": "1.0.0",
+  "description": "Jaw-dropping glassmorphism weather app for Gandhinagar using Open-Meteo API (free, no API key)",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "keywords": ["weather", "gandhinagar", "glassmorphism", "open-meteo"],
+  "author": "Gandhinagar Weather App",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9"
+  }
+}
