@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/weather-glass/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherGlass — Live Weather Anywhere</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Beautiful weather dashboard — search any city or use your location. Powered by Open-Meteo API.">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation"></div>
+    <div class="floating-orb orb-1" style="--delay: 0s; --color: rgba(99, 102, 241, 0.3)"></div>
+    <div class="floating-orb orb-2" style="--delay: 2s; --color: rgba(236, 72, 153, 0.3)"></div>
+    <div class="floating-orb orb-3" style="--delay: 4s; --color: rgba(34, 197, 94, 0.3)"></div>
+    <div class="floating-orb orb-4" style="--delay: 1s; --color: rgba(248, 113, 113, 0.3)"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <header class="glass-panel header">
+    <base href="/weather-glass/">
+            <div class="header-top">
+                <div class="brand">
+                    <h1 class="glitch-text" data-value="Weather Dashboard">WeatherGlass</h1>
+                    <p class="subtitle" id="locationName">Loading location...</p>
+                </div>
+                <button class="location-btn" onclick="useGeolocation()" title="Use my location">
+                    📍
+                </button>
+            </div>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="citySearch" placeholder="Search any city..." autocomplete="off">
+                    <button class="search-btn" onclick="searchCity()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+                <p class="powered-by">Powered by Open-Meteo API • Free • No API Key Required</p>
+            </div>
+        </header>
+
+        <!-- Weather Grid -->
+        <div class="weather-grid">
+            <!-- Current Weather Card -->
+            <div class="glass-panel current-weather-card animated-card">
+                <div class="card-icon">☀️</div>
+                <h2 id="currentTemp">--°C</h2>
+                <p id="condition" class="condition-text">Loading...</p>
+                <div class="weather-details">
+                    <div class="detail-row">
+                        <span>💧 Humidity</span>
+                        <span id="humidity">--%</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>🌬️ Wind</span>
+                        <span id="windSpeed">-- km/h</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>⏰ Time</span>
+                        <span id="time">--:--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sunrise/Sunset Card -->
+            <div class="glass-panel card animated-card" style="--delay: 0.2s">
+                <h3>🌅 Today's Schedule</h3>
+                <div class="sunrise-container">
+                    <div class="sun-info">
+                        <span class="icon">☀️</span>
+                        <div>
+                            <span>Sunrise</span>
+                            <strong id="sunrise">--:--</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="sunset-container">
+                    <div class="sun-info">
+                        <span class="icon">🌙</span>
+                        <div>
+                            <span>Sunset</span>
+                            <strong id="sunset">--:--</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UV Index Card -->
+            <div class="glass-panel card animated-card" style="--delay: 0.4s">
+                <h3>☀️ UV Index</h3>
+                <div class="uv-value">
+                    <span id="uvIndex">--</span>
+                    <span class="uv-label">Moderate</span>
+                </div>
+                <p class="uv-desc">Wear sunglasses</p>
+            </div>
+
+            <!-- Moon Phase Card -->
+            <div class="glass-panel card animated-card" style="--delay: 0.6s">
+                <h3>🌙 Moon</h3>
+                <div class="moon-visual" id="moonPhase">
+                    <div class="moon-circle"></div>
+                </div>
+                <p class="moon-text" id="moonPhaseText">Calculating...</p>
+            </div>
+        </div>
+
+        <!-- 7-Day Forecast -->
+        <section class="glass-panel forecast-section animated-card" style="--delay: 0.8s">
+            <h2>📅 7-Day Forecast</h2>
+            <div class="forecast-grid" id="forecastContainer"></div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="glass-panel footer">
+            <p>Built with ❤️ using Open-Meteo API • Weather data for any location worldwide</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="spinner"></div>
+        <p>Fetching latest weather data...</p>
+    </div>
+
+    <script src="js/weather.js"></script>
+</body>
+</html>
