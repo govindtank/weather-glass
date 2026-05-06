@@ -5,7 +5,8 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
-    "dev": "nodemon server/index.js"
+    "dev": "nodemon server/index.js",
+    "build": "mkdir -p dist && cp -r public/* dist/"
   },
   "keywords": ["weather", "gandhinagar", "glassmorphism", "open-meteo"],
   "author": "Gandhinagar Weather App",
